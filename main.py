@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 from typing import List, Optional, Dict
 import httpx
@@ -24,18 +25,21 @@ app = FastAPI(
     description="Congestion prediction and analysis for transport infrastructure",
     version="1.0.0"
 )
+
+# CORS Configuration
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
         "https://v0-transport-prediction-service.vercel.app",
         "https://v0-transport-prediction-service.vercel.app/",
-        "http://localhost:3000",  
-        "http://localhost:5173",  
+        "http://localhost:3000",  # For local development
+        "http://localhost:5173",  # For Vite local development
     ],
     allow_credentials=True,
-    allow_methods=["*"],  
-    allow_headers=["*"],  
+    allow_methods=["*"],  # Allows all methods (GET, POST, PUT, DELETE, etc.)
+    allow_headers=["*"],  # Allows all headers
 )
+
 # Configuration
 DATA_GEN_SERVICE_URL = "https://traffic-data-genrator.onrender.com"  # Data Generator Service URL
 REQUEST_TIMEOUT = 30.0
