@@ -26,7 +26,7 @@ app = FastAPI(
 )
 
 # Configuration
-DATA_GEN_SERVICE_URL = "http://localhost:8001"  # Data Generator Service URL
+DATA_GEN_SERVICE_URL = "https://traffic-data-genrator.onrender.com"  # Data Generator Service URL
 REQUEST_TIMEOUT = 30.0
 
 # Transport infrastructure data
