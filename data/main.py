@@ -31,6 +31,7 @@ app.add_middleware(
         "https://v0-transport-prediction-service.vercel.app",
         "https://v0-transport-prediction-service.vercel.app/",
         "https://foot-trafic-checker.onrender.com",
+        "https://foot-trafic-checker.onrender.com/",
         "http://localhost:3000", 
         "http://localhost:5173", 
     ],
