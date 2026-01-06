@@ -25,6 +25,20 @@ app = FastAPI(
     version="1.0.0"
 )
 
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://v0-transport-prediction-service.vercel.app",
+        "https://v0-transport-prediction-service.vercel.app/",
+        "http://localhost:3000", 
+        "http://localhost:5173", 
+    ],
+    allow_credentials=True,
+    allow_methods=["*"], 
+    allow_headers=["*"],  
+)
+
+
 # Constants
 METRO_STATIONS = [
     "Ghatkopar", "Andheri", "Versova", "Aarey", "Dahisar East",
