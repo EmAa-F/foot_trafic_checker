@@ -24,7 +24,18 @@ app = FastAPI(
     description="Congestion prediction and analysis for transport infrastructure",
     version="1.0.0"
 )
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=[
+        "https://v0-transport-prediction-service.vercel.app",
+        "https://v0-transport-prediction-service.vercel.app/",
+        "http://localhost:3000",  
+        "http://localhost:5173",  
+    ],
+    allow_credentials=True,
+    allow_methods=["*"],  
+    allow_headers=["*"],  
+)
 # Configuration
 DATA_GEN_SERVICE_URL = "https://traffic-data-genrator.onrender.com"  # Data Generator Service URL
 REQUEST_TIMEOUT = 30.0
