@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException, BackgroundTasks
+from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse, StreamingResponse
 from pydantic import BaseModel, Field
 from typing import List, Optional, Dict
@@ -25,6 +26,7 @@ app = FastAPI(
     version="1.0.0"
 )
 
+# CORS Configuration
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
@@ -32,14 +34,14 @@ app.add_middleware(
         "https://v0-transport-prediction-service.vercel.app/",
         "https://foot-trafic-checker.onrender.com",
         "https://foot-trafic-checker.onrender.com/",
-        "http://localhost:3000", 
-        "http://localhost:5173", 
+        "http://localhost:3000",  # For local development
+        "http://localhost:5173",  # For Vite local development
+        "http://localhost:8000",  # For local backend
     ],
     allow_credentials=True,
-    allow_methods=["*"], 
-    allow_headers=["*"],  
+    allow_methods=["*"],  # Allows all methods (GET, POST, PUT, DELETE, etc.)
+    allow_headers=["*"],  # Allows all headers
 )
-
 
 # Constants
 METRO_STATIONS = [
